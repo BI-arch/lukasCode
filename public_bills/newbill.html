@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css">  
+</head>
+<body>
+  <h1>Nowy Rachunek</h1> 
+      <div class="header">
+          <p>Naglowek</p>
+          <p><label for=""><span>Data rachunku:</span><input id="datefield" type="date" min="2000-01-01" max="2000-01-01"></label></p>
+          <p>
+            <label for="">
+              <span>Nazwa sklepu: </span>
+              <input list="vendors" maxlength=55>
+              <datalist id="vendors"></datalist>
+            </label>
+            <span><button data-modal-target="#modal">Open Modal</button></span>
+          </p>
+          <p>
+            <label for=""><span>Waluta</span>
+                  <select name="" id="">
+                      <option value="">EUR</option>
+                      <option value="">PLN</option>
+                      <option value="">CHF</option>
+                      <option value="">USD</option>
+                  </select>
+                </label>
+            </p>
+      </div>
+      <div>
+        <p>Pozycje</p>
+          <table id = "table">
+              <tbody>
+              <tr class="table_header">
+                  <th>LP.</th>
+                  <th>Nazwa Produktu</th>
+                  <th>Ilosc</th>
+                  <th>Cena jedn.</th>
+                  <th>Wartosc</th>
+                  <th></th>
+                </tr>
+                <tr>
+                    <td class = "lp">1</td>
+                    <!-- element data list z lista produktow jest na koncu strony -->
+                    <td><input list="products" name="" id=""></td>
+                    <td><input class="qty" type="number" step="0.01" placeholder="0.00" name="" id=""></td>
+                    <td><input class="prc" type="number" step="0.01" placeholder="0.00" name="" id=""></td>
+                    <td class = "val"></td>
+                    <td><button class="addpos">Dodaj</button></td>
+                </tr>
+                <tr class="sum">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>sum:</td>
+                  <td id="sum">0.00</td>
+                  <td></td>
+                </tr>
+                </tbody>
+          </table>
+      </div>
+
+      <div class="modal" id=modal>
+        <div class="modal-header"> 
+          <div class="title">Example Modal</div>
+          <div button data-close-button class="close-button">&times;</div>
+        </div>
+        <div class="modal-body">
+          Chyba nigy sie niczego nie naucze.
+        </div>
+      </div>
+      <div id="overlay"></div>
+
+      <datalist id="products"></datalist>
+
+  <script src="app.js"></script>  
+</body>
+</html>
