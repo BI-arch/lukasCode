@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BI Arch</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="images/logo.svg" alt="23andfour logo" class="logo">
+
+            <nav>
+                <a href="#" class="hide-desktop">
+                    <img src="images/ham.svg" alt="toggle menu" class="menu" id="menu">
+                </a>
+
+                <ul class="show-desktop hide-mobile" id="nav">
+                    <li id="exit" class="exit-btn hide-desktop">
+                        <img src="images/exit.svg" alt="exit menu">
+                    </li>
+                    <li><a href="home.html">home</a></li>
+                    <li><a href="#">services</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <img src="images/server.svg" alt="server graphic" class="server">
+            
+            <h1>New Business Solutions for Modern Era</h1>
+            <p class="subhead">Go for effective solutions and pay only for what you use.</p>
+
+            <img src="images/scroll.svg" alt="scroll down" class="scroll hide-mobile show-desktop">
+        </section>
+    </div>
+
+    <div class="blue-container">
+        <div class="container">
+            <ul>
+                <li>
+                    <img src="images/icon-1.svg" alt="Calendar icon">
+                    <p>Projects that are delivery on time</p>
+                </li>
+                <li>
+                    <img src="images/icon-2.svg" alt="Calendar icon">
+                    <p>Projects that costs almost nothing</p>
+                </li>
+                <li>
+                    <img src="images/icon-3.svg" alt="Calendar icon">
+                    <p>Efficient solutions available from around the world</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="gray-container">
+        <div class="container">
+            <ul>
+                <li>
+                    <figure>
+                        <img src="images/LK.jpg" class="lukas" alt="User testimonial picture">
+                        <blockquote>We are doing this what our customers wants us to do</blockquote>
+                        <figcaption>- Lukas</figcaption>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Start your free trial now!</h2>
+        <a href="#" class="cta">Get Started</a>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="container">
+                <a href="#">
+                    <img src="images/logo-white.svg" class="logo" alt="logo">
+                </a>
+                <p class="address">03-289 Warsaw<br>Ostrodzka 132<br>Poland</p>
+                <ul class="footer-links">
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="privacyPolicy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+    
+        var menu = document.getElementById('menu');
+        var nav = document.getElementById('nav');
+        var exit = document.getElementById('exit');
+
+        menu.addEventListener('click', function(e) {
+            nav.classList.toggle('hide-mobile');
+            e.preventDefault();
+        });
+
+        exit.addEventListener('click', function(e) {
+            nav.classList.add('hide-mobile');
+            e.preventDefault();
+        });
+
+    </script>
+
+</body>
+</html>
