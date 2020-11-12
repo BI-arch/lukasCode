@@ -5,9 +5,9 @@ const MSSQL = require('mssql')
 const body = require('body-parser')
 
 const pool = new MSSQL.ConnectionPool({
-    user: 'biadmin',
-    password: 'MiSt15Wa96*!',
-    server: 'bisqlstd.westeurope.cloudapp.azure.com',
+    user: 'lukasz',
+    password: 'Szukasz@2020',
+    server: 'biarchsql.database.windows.net',
     database: 'BI001_CST'
 })
 
