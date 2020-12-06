@@ -6,14 +6,14 @@ const body = require('body-parser')
 
 console.log(port)
 
-/* const pool = new MSSQL.ConnectionPool({
+const pool = new MSSQL.ConnectionPool({
     user: 'lukasz',
     password: 'Szukasz2020',
     server: 'biarchsql.database.windows.net',
     database: 'BI001_CST'
-}) */
+})
 
-/* pool.connect(err => {
+pool.connect(err => {
     if(err) {
         console.log('Error: ', err)
       }
@@ -21,7 +21,7 @@ console.log(port)
       else {
           console.log("sql connected succesfully")
       }
-}) */
+})
 
 //log details every request
 server.use((req, res, next) => {
@@ -57,15 +57,15 @@ console.log("server listening on port: " + port )
 
 async function getVendors(req, res) {
     let query = "Select vendorName from dim.Vendor "
-    //const result = await pool.query(query)
-    const result = {recordset: [{name: "Biedra"}]}
+    const result = await pool.query(query)
+    //const result = {recordset: [{name: "Biedra"}]}
     res.end(JSON.stringify(result.recordset))
 }
 
 async function getProducts(req, res) {
     let query = "Select productName from dim.Product "
-    //const result = await pool.query(query)
-    const result = {recordset: [{name: "Biedra"}]}
+    const result = await pool.query(query)
+    //const result = {recordset: [{name: "Biedra"}]}
     res.end(JSON.stringify(result.recordset))
 }
 
@@ -74,8 +74,8 @@ async function addVendor(req, res) {
     let newVendor = req.body
     let query = `Insert into dim.Vendor values('${newVendor}')`
     try {
-        //const result = await pool.query(query)
-        const result = {recordset: [{name: "Biedra"}]}
+        const result = await pool.query(query)
+        //const result = {recordset: [{name: "Biedra"}]}
         console.log(result)
         res.end(`dodano ${newVendor}`)
     }
