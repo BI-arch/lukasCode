@@ -52,20 +52,15 @@ server.use((req, res) => {
     res.end("Fuck You, there is no " + req.url)
 })
 
-server.listen(port)
-console.log("server listening on port: " + port )
-
 async function getVendors(req, res) {
-    let query = "Select vendorName from dim.Vendor "
+    let query = "Select vendorID, vendorName from dim.Vendor "
     const result = await pool.query(query)
-    //const result = {recordset: [{name: "Biedra"}]}
     res.end(JSON.stringify(result.recordset))
 }
 
 async function getProducts(req, res) {
     let query = "Select productName from dim.Product "
     const result = await pool.query(query)
-    //const result = {recordset: [{name: "Biedra"}]}
     res.end(JSON.stringify(result.recordset))
 }
 
@@ -75,7 +70,6 @@ async function addVendor(req, res) {
     let query = `Insert into dim.Vendor values('${newVendor}')`
     try {
         const result = await pool.query(query)
-        //const result = {recordset: [{name: "Biedra"}]}
         console.log(result)
         res.end(`dodano ${newVendor}`)
     }
@@ -83,5 +77,7 @@ async function addVendor(req, res) {
         console.log(err)
         res.end(err.message)
     }
-
 }
+
+server.listen(port)
+console.log("server listening on port: " + port )

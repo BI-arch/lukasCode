@@ -169,7 +169,8 @@ function addVendorsToList(vendorsJson) {
     
     vendorsJson.forEach(vendor => {
         let newVendor = document.createElement("OPTION")
-        newVendor.value = vendor.vendorName
+        newVendor.value = vendor.vendorID
+        newVendor.textContent = vendor.vendorName
         document.getElementById("vendors").appendChild(newVendor)        
     })
 
