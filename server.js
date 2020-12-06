@@ -6,7 +6,7 @@ const body = require('body-parser')
 
 const pool = new MSSQL.ConnectionPool({
     user: 'lukasz',
-    password: 'Szukasz@2020',
+    password: 'Szukasz2020',
     server: 'biarchsql.database.windows.net',
     database: 'BI001_CST'
 })
