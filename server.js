@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000
 const MSSQL = require('mssql')
 const body = require('body-parser')
 
+console.log(port)
+
 /* const pool = new MSSQL.ConnectionPool({
     user: 'lukasz',
     password: 'Szukasz2020',
