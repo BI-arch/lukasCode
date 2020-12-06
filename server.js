@@ -1,6 +1,6 @@
 const server = require("connect")();
 const static = require("serve-static");
-const port = 80
+const port = process.env.PORT || 3000
 const MSSQL = require('mssql')
 const body = require('body-parser')
 
