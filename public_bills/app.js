@@ -96,19 +96,6 @@ function formatNumber(number) {
     return Number(Number(number).toFixed(2)).toLocaleString("en",{minimumFractionDigits: 2});
 }
 
-var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; 
-var yyyy = today.getFullYear();
- if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
-
-today = yyyy+'-'+mm+'-'+dd;
-document.getElementById("datefield").setAttribute("max", today)
 
 //odpowiedzialne za miejsca dziesietne i separatory we wszystkich liczbch i kalkulacjach
 function addCommas(nStr)
@@ -223,3 +210,5 @@ function saveBill() {
   .then(message => {alert(message)})
 }
 
+document.getElementById("datefield").valueAsDate = new Date()
+document.getElementById("datefield").setAttribute("max", document.getElementById("datefield").value)
