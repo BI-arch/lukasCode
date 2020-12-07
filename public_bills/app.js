@@ -1,6 +1,7 @@
 document.querySelector(".qty").addEventListener("change", calcVal)
 document.querySelector(".prc").addEventListener("change", calcVal)
 document.querySelector("input[list=vendors]").addEventListener("keyup", checkValue)
+document.getElementById("saveBill").addEventListener("click", saveBill)
 
 function checkValue(keyup) {
   let valLenght = keyup.target.value.length
@@ -133,7 +134,7 @@ openModalButtons.forEach(button => {
     // const modal = document.querySelector(button.dataset.modalTarget)
     // openModal(modal)
     let newVendor = document.querySelector("input[list=vendors]").value
-    fetch("/addVendor",{method: 'POST', body: newVendor})    
+    fetch("/addVendor",{method: 'POST', body: JSON.stringify({newVendor: newVendor})})    
       .then(res => res.text())
       .then(message => {alert(message)})
   })
@@ -169,7 +170,7 @@ function addVendorsToList(vendorsJson) {
     
     vendorsJson.forEach(vendor => {
         let newVendor = document.createElement("OPTION")
-        newVendor.value = vendor.vendorID
+        newVendor.setAttribute("data-id", vendor.vendorID)
         newVendor.textContent = vendor.vendorName
         document.getElementById("vendors").appendChild(newVendor)        
     })
@@ -197,3 +198,28 @@ function addProductsToList(productsJson){
   //     document.getElementById("vendors").appendChild(newVendor)
   // }   
 }
+
+function saveBill() {
+  let order = {}
+  order.orderDate = document.getElementById("datefield").value
+  order.vendorID = document.querySelector("input[list=vendors]").value
+  order.currency = document.getElementById("currency").value
+  order.lines = []
+  
+  
+  document.querySelectorAll("tr").forEach((tr,i) => {
+
+    if(i>0 && i<document.querySelectorAll("tr").length-1) {
+      let line = {}      
+      line.productID = tr.querySelector("[list=products]").value
+      order.lines.push(line)
+    }
+
+  })
+
+
+  fetch("/addBill",{method: 'POST', body: JSON.stringify(order)})    
+  .then(res => res.text())
+  .then(message => {alert(message)})
+}
+

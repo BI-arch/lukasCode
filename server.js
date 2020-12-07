@@ -47,6 +47,10 @@ server.use("/getProducts", getProducts)
 //Add vendors to data base
 server.use("/addVendor", addVendor)
 
+//Add bills to data base
+server.use("/addBill", addBill)
+
+
 //response Fack You for all other urls
 server.use((req, res) => {
     res.end("Fuck You, there is no " + req.url)
@@ -67,17 +71,26 @@ async function getProducts(req, res) {
 
 async function addVendor(req, res) {
     let newVendor = req.body
-    let query = `Insert into dim.Vendor values('${newVendor}')`
+    newVendor = JSON.parse(newVendor)
+    let query = `Insert into dim.Vendor values('${newVendor.newVendor}')`
     try {
         const result = await pool.query(query)
         console.log(result)
-        res.end(`dodano ${newVendor}`)
+        res.end(`dodano ${newVendor.newVendor}`)
     }
     catch (err) {
         console.log(err)
         res.end(err.message)
     }
 }
+
+async function addBill(req, res) {
+    let newBill = req.body
+    console.log(newBill)
+    res.end("dzieki")
+}
+
+
 
 server.listen(port)
 console.log("server listening on port: " + port )
