@@ -75,8 +75,8 @@ async function addVendor(req, res) {
     let query = `Insert into dim.Vendor values('${newVendor.newVendor}')`
     try {
         const result = await pool.query(query)
-        console.log(result)
-        res.end(`dodano ${newVendor.newVendor}`)
+        console.log(result.recordset)
+        res.end(`dodano ${result.recordset}`)
     }
     catch (err) {
         console.log(err)
@@ -85,9 +85,21 @@ async function addVendor(req, res) {
 }
 
 async function addBill(req, res) {
-    let newBill = req.body
+    let newBill = JSON.parse(req.body)
     console.log(newBill)
-    res.end("dzieki")
+    //let query = `Insert into fct.Order OUTPUT INSERTED.OrderID values ('${newBill.vendorID.match(/\[(.+)\]/)[1]}','1','${newBill.orderDate}')`
+    let query = `insert into [fct].[Order] OUTPUT INSERTED.OrderID values ('${newBill.vendorID.match(/\[(.+)\]/)[1]}', '1', '${newBill.orderDate}')`
+    try {
+        const result = await pool.query(query)
+        newBill.lines.forEach(line => {
+            console.log(`Insert for each order line - orderID: ${result.recordset[0].OrderID}, productID: ${line.productID}`)
+        });
+        res.end(`dodano ${result.recordset[0].OrderID}`)
+    }
+    catch (err) {
+        console.log(err)
+        res.end(err.message)
+    }
 }
 
 
