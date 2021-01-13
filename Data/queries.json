@@ -1,0 +1,6 @@
+{
+    "getVendors" : "Select vendorID, vendorName from dim.Vendor" ,
+    "getProducts" :"Select productName from dim.Product ",
+    "addVendor" : "Insert into dim.Vendor(vendorName) VALUES(@newVendor)",
+    "addBill" : "insert into [fct].[Order] OUTPUT INSERTED.OrderID values (@vendorID,@OderDate)"
+}
